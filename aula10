@@ -1,1 +1,42 @@
+#TRATAMENTO DE EXCEÇÃO
+lista = [1,10]
+try:
+    
+        divisao = 10/1  #Forcei um erro
+        numero = lista[1]
+
+except ArithmeticError:
+    print('Não é possivel realizar uma divisão por 0')
+except IndexError:
+    print('Erro ao acessar um indice inválido da lista')
+except Exception as ex:
+    print('Erro desconhecido. Erro: {}'.format(ex))
+
+else:
+    print('Executa quando não ocorre exeção')
+    
+    
+    
+    
+#PERSONALIZAR E CRIAR UMA EXEÇÃO
+class Error (Exception):
+    pass
+
+class InputError(Error):
+    def __init__(self, message):
+        self.message = message
+
+while True:
+    try:
+         x = int(input('Entre com uma nota de 0 a 10: '))
+         print(x)
+         if x > 10:
+             raise InputError('Nota não pode ser maior que 10')
+         elif x < 0:
+             raise InputError('Nota não pode ser menor que zero')
+         break
+    except ValueError:
+        print('Valor inválido. Deve-se digitar apenas números.')
+    except InputError as ex:
+        print(ex)
 
